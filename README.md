@@ -50,3 +50,37 @@ https://github.com/bkaradzic/bx
 	OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 	OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 	OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Building
+
+## Windows
+
+Ensure you have a MINGW environment. The easiest option is to use [MSYS2](https://www.msys2.org/).
+
+
+### x64
+
+#### Install dependencies:
+
+```shell
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake
+```
+
+Make sure the following paths are in your PATH (replace `C:\msys64` with your MSYS2 installation path):
+
+ - `C:\msys64\mingw64\bin`
+ - `C:\msys64\usr\bin`
+
+#### Build:
+
+Make sure you have exported the MINGW environment variable if your directory is different from `C:\msys64`.
+Add this to your upstream Makefile:
+
+```makefile
+export MINGW := C:\path\to\msys64\mingw64\
+```
+
+```shell
+make clean
+make mingw-gcc-64
+```
